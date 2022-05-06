@@ -286,7 +286,7 @@
   #define THERMAL_PROTECTION_PERIOD 40        // Seconds
   #define THERMAL_PROTECTION_HYSTERESIS 4     // Degrees Celsius
 
-  //#define ADAPTIVE_FAN_SLOWING              // Slow part cooling fan if temperature drops
+  #define ADAPTIVE_FAN_SLOWING              // Slow part cooling fan if temperature drops
   #if BOTH(ADAPTIVE_FAN_SLOWING, PIDTEMP)
     //#define NO_FAN_SLOWING_IN_PID_TUNING    // Don't slow fan speed during M303
   #endif
@@ -506,9 +506,9 @@
  * The fan turns on automatically whenever any driver is enabled and turns
  * off (or reduces to idle speed) shortly after drivers are turned off.
  */
-//#define USE_CONTROLLER_FAN
+#define USE_CONTROLLER_FAN
 #if ENABLED(USE_CONTROLLER_FAN)
-  //#define CONTROLLER_FAN_PIN -1           // Set a custom pin for the controller fan
+  #define CONTROLLER_FAN_PIN   FAN1_PIN          // Set a custom pin for the controller fan
   //#define CONTROLLER_FAN_USE_Z_ONLY       // With this option only the Z axis is considered
   //#define CONTROLLER_FAN_IGNORE_Z         // Ignore Z stepper. Useful when stepper timeout is disabled.
   #define CONTROLLERFAN_SPEED_MIN         0 // (0-255) Minimum speed. (If set below this value the fan is turned off.)
@@ -528,7 +528,7 @@
 // When first starting the main fan, run it at full speed for the
 // given number of milliseconds.  This gets the fan spinning reliably
 // before setting a PWM value. (Does not work with software PWM for fan on Sanguinololu)
-//#define FAN_KICKSTART_TIME 100
+#define FAN_KICKSTART_TIME 100
 
 // Some coolers may require a non-zero "off" state.
 //#define FAN_OFF_PWM  1
@@ -605,7 +605,7 @@
  * Multiple extruders can be assigned to the same pin in which case
  * the fan will turn on when any selected extruder is above the threshold.
  */
-#define E0_AUTO_FAN_PIN -1
+#define E0_AUTO_FAN_PIN FAN2_PIN
 #define E1_AUTO_FAN_PIN -1
 #define E2_AUTO_FAN_PIN -1
 #define E3_AUTO_FAN_PIN -1
@@ -985,11 +985,11 @@
 //
 // Add the G35 command to read bed corners to help adjust screws. Requires a bed probe.
 //
-//#define ASSISTED_TRAMMING
+#define ASSISTED_TRAMMING
 #if ENABLED(ASSISTED_TRAMMING)
 
   // Define positions for probe points.
-  #define TRAMMING_POINT_XY { {  20, 20 }, { 210,  20 }, { 210, 210 }, { 20, 210 } }
+  #define TRAMMING_POINT_XY { {  20, 20 }, { 180,  20 }, { 180, 180 }, { 20, 180 } }
 
   // Define position names for probe points.
   #define TRAMMING_POINT_NAME_1 "Front-Left"
